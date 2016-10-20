@@ -1,25 +1,42 @@
 from mot import Mot
+from uint import UInt
+from sint import SInt
 
 a = Mot(1)
 b = Mot(1)
 
-print a.valeur()
+print "f) " + a.valeur()
 
-print a.binaire
+print "g) " + a.binaire
 a.__rshift__()
-print a.binaire
+print "h) " + a.binaire
 a.__lshift__()
-print a.binaire
+print "i) " + a.binaire
 a.complement()
-print a.binaire
+print "j) " + a.binaire
 
-print "__eq__ : " + str(a.__eq__(b))
+print "k) __eq__ : " + str(a.__eq__(b))
 b.binaire=a.binaire
-print "__eq__ : " + str(a.__eq__(b))
+print "l) __eq__ : " + str(a.__eq__(b))
 
 
 a.__setnbBytes__(3)
-print a.nbBytes
+print "m) " + str(a.nbBytes)
 #print a.compare(b)
 #print b.compare(a)
 #print a.compare(a)
+
+c = UInt(1)
+print "n) " + c.binaire
+
+d = UInt(1)
+
+print "r) " + c.binaire + " + " + d.binaire + " = " + c.__add__(d)
+
+print "s) " + c.binaire + " > " + d.binaire + " ? " + c.compare(d)
+
+e = SInt(1)
+print "u) " + e.complement()
+
+f = SInt(1)
+print "s) " + e.binaire + " > " + f.binaire + " ? " + e.compare(f)

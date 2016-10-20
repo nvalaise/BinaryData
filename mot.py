@@ -11,13 +11,13 @@ class Mot:
 			sys.exit();
 		self.nbBytes = arg
 		self.binaire=""
-		for x in xrange(0,self.nbBytes*8):
+		for x in range(0,self.nbBytes*8):
 			self.binaire+=str(randint(0,1))
 			pass
-		print("Creation d'un mot a " + str(self.nbBytes) + " octets : " + self.binaire)
+		print("a) Creation d'un mot a " + str(self.nbBytes) + " octets : " + self.binaire)
 
 	def __setnbBytes__(self,arg):
-		print("Read only")
+		print("b) Read only")
 
 	def __getnbBytes__(self):
 		return self.nbBytes
@@ -33,7 +33,7 @@ class Mot:
 		cpt=0
 		hexa="0x"
 		tmp=""
-		for x in xrange(0,self.__len__()):
+		for x in range(0,self.__len__()):
 			cpt+=1
 			tmp+=self.binaire[x]
 			if cpt==4:
@@ -44,11 +44,11 @@ class Mot:
 
 	def binToHexa(self, bloc):
 		sumHexa=0
-		for x in xrange(0,4):
+		for x in range(0,4):
 			binPow = int(bloc[x]) * pow(2,3-x)
 			sumHexa+=binPow
 			#print("b " + str(bloc[x]) + " pow = " + str(binPow))
-		print("bloc = " + bloc + " hexa = " + str(sumHexa))
+		print("c) bloc = " + bloc + " hexa = " + str(sumHexa))
 
 		#On compte de 0 a 9 puis de A a F
 		if sumHexa<10:
@@ -74,10 +74,10 @@ class Mot:
 		sizeCmp=cmp.__len__()
 
 		if sizeSelf!=sizeCmp :
-			print("Error : sizes are differents");
+			print("d) Error : sizes are differents");
 			sys.exit();
 		for x in range(0,sizeSelf):
-			#print(str(x) + " => {" + str(self.binaire[x]) + " , " + str(cmp.binaire[x]) + "}")
+			#print("e)" + str(x) + " => {" + str(self.binaire[x]) + " , " + str(cmp.binaire[x]) + "}")
 			if self.binaire[x]>cmp.binaire[x]:
 				return "10"
 			elif self.binaire[x]<cmp.binaire[x]:
@@ -108,6 +108,7 @@ class Mot:
 			else :
 				tmp+="1"
 		self.binaire=tmp
+		return tmp
 
 	def extend(self, k):
 		bytes=max(1, max(k, self.nbBytes))
